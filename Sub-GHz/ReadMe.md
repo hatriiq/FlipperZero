@@ -1,82 +1,128 @@
-# Various SUB files I've found or created. Some tested, some not.
+Keeping all the IR files in my fork of the [Flipper-IRDB](https://github.com/UberGuidoZ/Flipper-IRDB)! (I'm now able to maintain the entire branch.)
 
-Special thanks to [FalsePhilosopher](https://github.com/FalsePhilosopher) for organization help and everyone else that shares files!<br>
-Worth a mention: If you have a HackRF, you can find a ton of files and info over at RocketGod's [HackRF Treasure Chest](https://github.com/RocketGod-git/HackRF-Treasure-Chest).
+Did you know you can quickly generate your own IR files on the go at [Flipper Maker](https://flippermaker.github.io/)?
 
-## How are the raw SUB files are formatted? (Adapted from a chat with [ImprovingRigmarole](https://github.com/improving-rigmarole)!)
+ Looking for an updated Universal Remote files? Then you're in the right place! [Unleashed](https://github.com/Eng1n33r/flipperzero-firmware) and [RogueMaster](https://github.com/RogueMaster/flipperzero-firmware-wPlugins) both include these.<br>
+ ***Now with ALL buttons too!***  All files developed with support/testing from [UberGuidoZ](https://github.com/UberGuidoZ). HUGE thank you to [amec0e](https://github.com/amec0e) for maintenance!
+ 
+[TV universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/tv.ir) compiled by [Hyper_Mash](https://discord.com/channels/740930220399525928/954422774141710366/994121751023853668) and maintained by [amec0e](https://github.com/amec0e)<br>
+[AC universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/ac.ir) added by [JEREMYNO](https://github.com/jaroslavmraz) and maintained by [amec0e](https://github.com/amec0e).<br>
+[Soundbar/Speakers universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/audio.ir) added and maintained by [amec0e](https://github.com/amec0e).<br>
+[Projector universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/projectors.ir) added by [xMasterx](https://github.com/Eng1n33r/flipperzero-firmware/commit/029f82dc822e6d3515b39b839a2f70500dc9bb86) and maintained by [amec0e](https://github.com/amec0e).<br>
+[Fans universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/fans.ir) compiled by Edhel90 and maintained by [amec0e](https://github.com/amec0e)
 
-This is a very quick and dirty explanation of the Flipper "raw" SUB format. Enough to figure out more at least.<br>
-Each numerical value is the duration of a pulse in microseconds. Positive is `send` and negative is `pause`.<br>
-Example: `3607 -100 1789 -66` means send (positive) during the `3607µs` then pause (negative) for the `100µs`, etc.<br>
-You can easily plot any raw SUB (or IR) file at the [Official Pulse Plotter](https://my.flipp.dev/pulse-plotter) and see a graph to help decode patterns.
+-----
 
-Another take... positive numbers in the raw .SUB files tell you how long (in microseconds / μs) the signal was ON and the negative numbers tell you how long it was OFF. Usually on means 1 and off means 0. This also makes sense when you remember/realize OOK = `On Off Keying`.
+[Unleashed firmware](https://github.com/Eng1n33r/flipperzero-firmware/releases/latest) was the first to add all of the Universal Remotes. Highly advise checking out their work. (Thanks [xMasterx](https://github.com/xMasterx)!)
 
-## NOTE: The deBruijn and OpenSesame files have moved to the [Garages subfolder](https://github.com/UberGuidoZ/Flipper/tree/main/Sub-GHz/Garages/deBruijn).
+-----
 
-You can generate MANY of your own SUBs, such as MegaCode and Firefly, over at [Flipper Maker](https://flippermaker.github.io/).
+Huge thank you to [ChaoticDynamic aka c-nagy](https://github.com/c-nagy) for some duplicate signal and file cleanup ([details here](https://github.com/UberGuidoZ/Flipper/pull/16).)<br>
 
-Looking to mess with garage doors? You can try the OpenSesame/deBruijn files above.<br>
-(Also check out more info at [RemoteDup](https://www.ifoedit.com/RemoteDup.html), [GarageHack](https://www.ifoedit.com/garagehack.html), and [Learn Button coding](https://support.dealer.liftmaster.com/articles/Knowledge/Determine-the-Color-of-the-Learn-Button-on-Your-Garage-Door-Opener).
+**You may have manifest file issues if you do not compile your own firmware, or use one of the listed firmwares above!**<br>
+*Both unlocked firmwares have been tested successfully. Official has stated they will merge it at some point.*
 
-# Frequency limitations and caveats
+**NOTE: Long pauses are normal, including 10-15 seconds of no apparent activity. It's just skipping through the "other" buttons.**
 
-Officially supported frequencies: 300-348 MHz, 387-464 MHz, and 779-928 MHz (from [CC1101 chip docs](https://www.ti.com/product/CC1101))<br>
-Unofficially supported frequencies: 281-361 MHz, 378-481 MHz, and 749-962 MHz (from [YARD Stick One](https://greatscottgadgets.com/yardstickone/) CC1111 docs)
+Click on the file of your choice and save it with a right-click from the `Raw` button here:
 
-Official does not allow anything outside of the officially supported CC1101 specs.<br>
-RogueMaster & CodeGrabber (Unleashed) allows unofficially supported frequencies with the `extend_range` and `dangerous_settings` files.
+![Download_File](https://user-images.githubusercontent.com/57457139/174234554-555503d2-019f-4dbe-b129-29b3a0a9f1e6.png)
 
-**NOTE: Going outside the officially supported frequencies may DAMAGE YOUR FLIPPER AMP.<br>
-Please understand what you're doing if trying to break out of official frequencies.**
+Then, use qFlipper to transfer it to your Flipper and replace the existing one (or add a new one) here:
 
-Here's what the [manufacturer of the chip (CC1101) says](https://e2e.ti.com/support/wireless-connectivity/sub-1-ghz-group/sub-1-ghz/f/sub-1-ghz-forum/1120743/cc1101-operation-outside-datasheet-frequencies/4154832) about going outside the limits:
+![Replace_This](https://user-images.githubusercontent.com/57457139/174234726-e39c1917-0d21-4b60-88c9-70fd60ee069f.png)
 
-```
-The frequency range of the chip is always tested in the verification tests and there is always some design margin
-included before the VCO and/or PLL has problems operating for a specified frequency range. Working outside the
-frequency range can cause issues with the VCO and/or PLL and/or divider not operating correctly. If the VCO is
-operating outside it's standard frequency range, there are risks of unwanted emissions and no oscillation. The PLL
-can also fail to lock if operating outside it's standard frequency range and will still apply power to the antenna.
+***Again, you may have manifest file issues if you do not compile your own or use a tested firmware above!***
 
-Risks with antenna mismatch are increased harmonics, reduced output power and increased current consumption.
-Generally, the antenna mismatch can be large and the output stage will not be damaged when presented with a large
-mismatch for short periods of time. However, if the antenna mismatch is very poor for long periods of time, then
-this can effect the longevity of the chip especially if further stressed with maximum voltage and maximum temperature.
-Recommend keeping VSWR better than 5:1 for worst case scenarios.
-```
+## Protocol info
+This info was gathered from the respecctive locations in the firmwares comments. <br>
+Ie. lib/infrared/encoder_decoder/`*`/infrared_protocol_`*`.h<br>
+Some of the info doesn't show up well so view thew raw readme or [this commit](https://github.com/flipperdevices/flipperzero-firmware/commit/75e9de12b065bd5e572b8b9232c8b9670c8e6f91).
 
-You'll need to edit some code and recompile if you want to break outside of the officially supported frequencies. [Proceed with caution.](https://github.com/UberGuidoZ/Flipper/blob/main/Sub-GHz/Restaurant_Pagers/SubGHz_changes.md)
+### Kaseikyo protocol description
+https://github.com/Arduino-IRremote/Arduino-IRremote/blob/master/src/ir_Kaseikyo.hpp <br>
+*     Preamble   Preamble      Pulse Distance/Width          Pause       Preamble   Preamble
+*       mark      space            Modulation             up to period    repeat     repeat
+*                                                                          mark       space
+*
+*        3360      1665               48 bit              ...130000        3456       1728
+`     __________          _ _ _ _  _  _  _ _ _  _  _ _ _                ___________`<br>
+` ____          __________ _ _ _ __ __ __ _ _ __ __ _ _ ________________           ___________`
 
-Officially supported frequencies according to region (as manufactured and programmed on Official firmware):
+### NEC protocol description
+https://radioparty.ru/manuals/encyclopedia/213-ircontrol?start=1 <br>
+*     Preamble   Preamble      Pulse Distance/Width          Pause       Preamble   Preamble  Stop
+*       mark      space            Modulation             up to period    repeat     repeat    bit
+*                                                                          mark       space
+*
+*        9000      4500         32 bit + stop bit         ...110000         9000       2250
+`     __________          _ _ _ _  _  _  _ _ _  _  _ _ _                ___________            _`<br>
+` ____          __________ _ _ _ __ __ __ _ _ __ __ _ _ ________________           ____________ ___`
 
-`Allowed to transmit (MHz):`<br>
-`R01: 433.05-434.79; 868.15-868.55`<br>
-`R02: 304.10-321.95; 433.05-434.79; 915.00-928.00`<br>
-`R03: 312.00-315.25; 920.50-923.50`<br>
+### RC5 protocol description
+https://www.mikrocontroller.net/articles/IRMP_-_english#RC5_.2B_RC5X
+*                                       Manchester/biphase
+*                                           Modulation
+*
+*                              888/1776 - bit (x2 for toggle bit)
+*
+`                           __  ____    __  __  __  __  __  __  __  __`<br>
+`                         __  __    ____  __  __  __  __  __  __  __  _`<br>
+*                         | 1 | 1 | 0 |      ...      |      ...      |
+*                           s  si   T   address (MSB)   command (MSB)
+*
+*    Note: manchester starts from space timing, so it have to be handled properly
+*    s - start bit (always 1)
+*    si - RC5: start bit (always 1), RC5X - 7-th bit of address (in our case always 0)
+*    T - toggle bit, change it's value every button press
+*    address - 5 bit
+*    command - 6/7 bit
 
-`Shipped to:`<br>
-`R01: EU, UK, RU, UA, BY, BA, PF, VA, IS, KZ, LI, MD, MK, NO, RS, CH, TR`<br>
-`R02: US, CA, AU, NZ, MX, BR, CL, AR, UM`<br>
-`R03: rest of the world`
+### RC6 protocol description
+https://www.mikrocontroller.net/articles/IRMP_-_english#RC6_.2B_RC6A
+*      Preamble                       Manchester/biphase                       Silence
+*     mark/space                          Modulation
+*
+*    2666     889        444/888 - bit (x2 for toggle bit)                       2666
+*
+`  ________         __    __  __  __    ____  __  __  __  __  __  __  __  __`<br>
+` _        _________  ____  __  __  ____    __  __  __  __  __  __  __  __  _______________`<br>
+*                   | 1 | 0 | 0 | 0 |   0   |      ...      |      ...      |             |
+*                     s  m2  m1  m0     T     address (MSB)   command (MSB)
+*
+*    s - start bit (always 1)
+*    m0-2 - mode (000 for RC6)
+*    T - toggle bit, twice longer
+*    address - 8 bit
+*    command - 8 bit
 
-# Modulation (AM/FM)
+### SAMSUNG32 protocol description
+https://www.mikrocontroller.net/articles/IRMP_-_english#SAMSUNG <br>
+*  Preamble   Preamble     Pulse Distance/Width        Pause       Preamble   Preamble  Bit1  Stop
+*    mark      space           Modulation                           repeat     repeat          bit
+*                                                                    mark       space
+*
+*     4500      4500        32 bit + stop bit       40000/100000     4500       4500
+`  __________          _  _ _  _  _  _ _ _  _  _ _                ___________            _    _`<br>
+` _          __________ __ _ __ __ __ _ _ __ __ _ ________________           ____________ ____ ___`
 
-AM650 and FM650 modulation tries to cover more range of frequencies at the cost of less pickup distance.<br>
-AM270 and FM270 modulation offer a more narrow range, but have a cleaner pickup and slightly better distance.
-
-[Official documentation is an excellent read!](https://docs.flipperzero.one/sub-ghz/read-raw#HUe8f)
-
-evilpete has a script for creating custom modulations amoung various other flipper flipper file format generators/converters
-https://github.com/evilpete/flipper_toolbox
-
-# Plotting/analyzing signals
-ShotokanZH has a plotter
-https://github.com/ShotokanZH/flipper_sub_plotters_comparers
-The flipper lab website has one
-https://lab.flipper.net/pulse-plotter
-and a python script by paucoma
-https://gist.github.com/paucoma/57080d2845ba4b21b980b90842c38eb1
+### Sony SIRC protocol description
+https://www.sbprojects.net/knowledge/ir/sirc.php <br>
+http://picprojects.org.uk/
+*      Preamble  Preamble     Pulse Width Modulation           Pause             Entirely repeat
+*        mark     space                                     up to period             message..
+*
+*        2400      600      12/15/20 bits (600,1200)         ...45000          2400      600
+`     __________          _ _ _ _  _  _  _ _ _  _  _ _ _                    __________          _ _`<br>
+` ____          __________ _ _ _ __ __ __ _ _ __ __ _ _ ____________________          __________ _`
+*                        |    command    |   address    |
+*                 SIRC   |     7b LSB    |    5b LSB    |
+*                 SIRC15 |     7b LSB    |    8b LSB    |
+*                 SIRC20 |     7b LSB    |    13b LSB   |
+*
+* No way to determine either next message is repeat or not,
+* so recognize only fact message received. Sony remotes always send at least 3 messages.
+* Assume 8 last extended bits for SIRC20 are address bits.
 
 -----
 
