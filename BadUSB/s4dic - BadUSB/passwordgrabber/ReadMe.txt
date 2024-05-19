@@ -13,7 +13,7 @@
 * Step 9: Launch the attack (on a vm or on your pc it doesn't matter)
 
 ## Demo :
-[https://youtu.be/OfgyzUYEPXw](https://youtu.be/OfgyzUYEPXw)
+https://youtu.be/OfgyzUYEPXw
 
 ## Data Exfiltrated :
 - `PC Name`    - Get the name of PC
