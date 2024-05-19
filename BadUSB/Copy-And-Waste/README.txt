@@ -46,3 +46,8 @@ All contributors names will be listed here:
 
   0.1
   Initial Release
+
+  ## Acknowledgments
+
+* [Hak5]
+* [I-Am-Jakoby]

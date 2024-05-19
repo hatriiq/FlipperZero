@@ -31,3 +31,8 @@ All contributors names will be listed here
 
 atomiczsec
 I am Jakoby
+
+## Acknowledgments
+
+* [Hak5]
+* [I-Am-Jakoby]

@@ -35,3 +35,8 @@ I am Jakoby
 
 * 0.1
     * Initial Release
+
+## Acknowledgments
+
+* [Hak5](https://hak5.org/)
+* [I-Am-Jakoby](https://github.com/I-Am-Jakoby)
