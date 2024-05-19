@@ -8,7 +8,7 @@ Unleashed / RogueMaster have already merged this into their default dict file so
 
 -----
 
-To use, add the `mf_classic_dict_user.nfc` file from this repo into the SD Card -> nfc -> assets folder.
+To use, move the `mf_classic_dict_user.nfc` file into the SD Card -> nfc -> assets folder.
 
 No need to overwrite anything or rename anything. Do that and you're done! Now verify the new keys are recognized
 Head over to Flipper -> NFC -> Extra Actions -> Mf Classic Keys and you should see something like this:
