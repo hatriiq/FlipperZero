@@ -3,6 +3,5 @@ He has everything you need!! I simply removed all of the things you don't need d
 
 https://github.com/UberGuidoZ/Flipper
 
-These are all of the SD card assets you need for your Flipper Zero!
 
 
